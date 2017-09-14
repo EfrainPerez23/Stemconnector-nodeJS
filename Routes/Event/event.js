@@ -7,37 +7,36 @@ const eventControl = require('../../Models/eventsModel')
 // get list of Events
 router.get('/:id?', (req, res) => {
     const id = db.escape(req.params.id);
-    if(req.params.id){
-        eventControl.getEvent(id ,function(err,result){
+    if (req.params.id) {
+        eventControl.getEvent(id, function(err, result) {
             // Server err
-            if(err){
+            if (err) {
                 res.status(500);
-                return res.json({errors: ['could not retrieve data',err]});
+                return res.json({ errors: ['could not retrieve data', err] });
             }
             // 404 not Found
-            if(!result.length){
+            if (!result.length) {
                 res.status(404);
-                return res.json({errors: ['Event not found']})
+                return res.json({ errors: ['Event not found'] })
             }
 
-            res.json(result); 
-        });    
-    }else{
-        eventControl.getEvents(function(err,result){
+            res.json(result);
+        });
+    } else {
+        eventControl.getEvents(function(err, result) {
             //server err
-            if(err){
+            if (err) {
                 res.status(500);
-                return res.json({errors: ['could not retrieve data',err]});
+                return res.json({ errors: ['could not retrieve data', err] });
             }
             // 404 not Found
-            if(!result.length){
+            if (!result.length) {
                 res.status(404);
-                return res.json({errors: ['Their are no events']})
+                return res.json({ errors: ['Their are no events'] })
             }
-            res.json(result); 
+            res.json(result);
         });
     }
-    
 });
 // router.get('/getEvents', (req, res) => {
 //     let sql = 'SELECT * FROM event';
@@ -55,13 +54,13 @@ router.get('/:id?', (req, res) => {
 
 // post - Insert Events
 router.post('/add', function(req, res) {
-    eventControl.addEvent(req.body, function(err, result){
-        if(err){
+    eventControl.addEvent(req.body, function(err, result) {
+        if (err) {
             db.on('error', (dbErr) => {
                 console.log('[mysql error]', dbErr);
             });
             console.log(err);
-            return res.status(500).json({errors: ['could not retrieve data',err]});    
+            return res.status(500).json({ errors: ['could not retrieve data', err] });
         }
 
         res.json(req.body);
@@ -86,13 +85,13 @@ router.post('/add', function(req, res) {
 
 // delete Events
 router.delete('/delete/:id', function(req, res) {
-    eventControl.deleteEvent(db.escape(req.params.id), function(err, result){
-        if(err){
+    eventControl.deleteEvent(db.escape(req.params.id), function(err, result) {
+        if (err) {
             db.on('error', (dbErr) => {
                 console.log('[mysql error]', dbErr);
             });
-                return res.status(500).json({errors: ['could not retrieve data',err]});
-                console.log(err);
+            return res.status(500).json({ errors: ['could not retrieve data', err] });
+            console.log(err);
         }
 
         res.json(result);
@@ -114,13 +113,13 @@ router.delete('/delete/:id', function(req, res) {
 //     })
 // });
 router.put('/update/:id', function(req, res) {
-    eventControl.UpdateEvent(db.escape(req.params.id), req.body, function(err, result){
-        if(err){
+    eventControl.UpdateEvent(db.escape(req.params.id), req.body, function(err, result) {
+        if (err) {
             db.on('error', (dbErr) => {
                 console.log('[mysql error]', dbErr);
             });
             console.log(err);
-            return res.status(500).json({errors: ['could not retrieve data',err]});       
+            return res.status(500).json({ errors: ['could not retrieve data', err] });
         }
 
         res.json(result);
