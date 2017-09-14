@@ -5,7 +5,7 @@ const eventControl = require('../../Models/eventsModel')
 
 
 // get list of Events
-router.get('/:id?', (req, res) => {
+router.get('/:id', (req, res) => {
     const id = db.escape(req.params.id);
     if (req.params.id) {
         eventControl.getEvent(id, function(err, result) {
@@ -53,7 +53,7 @@ router.get('/:id?', (req, res) => {
 // });
 
 // post - Insert Events
-router.post('/add', function(req, res) {
+router.post('/', function(req, res) {
     eventControl.addEvent(req.body, function(err, result) {
         if (err) {
             db.on('error', (dbErr) => {
@@ -84,7 +84,7 @@ router.post('/add', function(req, res) {
 // });
 
 // delete Events
-router.delete('/delete/:id', function(req, res) {
+router.delete('/:id', function(req, res) {
     eventControl.deleteEvent(db.escape(req.params.id), function(err, result) {
         if (err) {
             db.on('error', (dbErr) => {
@@ -112,7 +112,7 @@ router.delete('/delete/:id', function(req, res) {
 //         res.status(200).send(result);
 //     })
 // });
-router.put('/update/:id', function(req, res) {
+router.put('/:id', function(req, res) {
     eventControl.UpdateEvent(db.escape(req.params.id), req.body, function(err, result) {
         if (err) {
             db.on('error', (dbErr) => {

@@ -23,8 +23,8 @@ db.connect((err) => {
 
 
 
-app.use('/event', eventController);
-app.use('/initiative', initiativeController);
+app.use('/events', eventController);
+app.use('/initiatives', initiativeController);
 app.use('/activity', activityController);
 
 app.use((req, res, next) => {
