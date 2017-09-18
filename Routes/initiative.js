@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../DataLayer/dbManager');
 const iniControl = require('../Models/initiativeModel');
 const sendBack = require('../sendback');
-//inicio
+
 
 //Get all Initiatives
 router.get('/', (req, res) => {

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../DataLayer/dbManager');
 const activityControl = require('../Models/ActivityModel');
-//inicio
 
 //Get all Activities
 router.get('/', (req, res) => {
