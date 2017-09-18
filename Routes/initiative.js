@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../DataLayer/dbManager');
-const iniControl = require('../Models/initiativeModel');
+const iniControl = require('../Models/InitiativeModel');
 const sendBack = require('../sendback');
 
 

@@ -20,6 +20,8 @@ router.get('/', (req, res) => {
     });
 });
 
+
+
 router.get('/:id', (req, res) => {
     const id = db.escape(req.params.id);
     if (id) {

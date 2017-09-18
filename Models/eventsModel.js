@@ -2,10 +2,10 @@ const db = require('../DataLayer/dbManager');
 
 let eventModel = {
     getEvents: function(callback) {
-        return db.query('SELECT * FROM Event a INNER JOIN Event e ON a.Event_idEvent = e.idEvent', callback);
+        return db.query('SELECT * FROM Event', callback);
     },
     getEvent: function(id, callback) {
-        return db.query('SELECT *  FROM Event e INNER JOIN Activity a ON a.Event_idEvent = e.idEvent WHERE a.Event_idEvent =' + id, callback);
+        return db.query('SELECT *  FROM Event WHERE idEvent = ' + id, callback);
     },
     addEvent: function(ev, callback) {
         return db.query('INSERT INTO `Event` VALUES (?,?,?,?,?,?,?,?,?)', [null, ev.name, ev.description, ev.status, ev.startDate, ev.endDate, ev.idInitiative, ev.email, ev.localizacion], callback);
@@ -15,6 +15,12 @@ let eventModel = {
     },
     UpdateEvent: function(id, ev, callback) {
         return db.query('UPDATE `Event` SET name = ?, description = ?, status = ?, startDate = ?, endDate = ?, idInitiative = ?, email = ?, location = ? WHERE idEvent = ' + id, [ev.name, ev.description, ev.status, ev.startDate, ev.endDate, ev.idInitiative, ev.email, ev.location], callback);
+    },
+    ActivitiesEvent: function(id, callback) {
+        return db.query('SELECT * FROM Activity WHERE Event_idEvent = ' + id + 'ORDER BY 3 ASC ', callback);
+    },
+    SpeakersEvent: function(id, callback) {
+        return db.query('SELECT idSpeaker, name, title, bio FROM Event e INNER JOIN Event_has_Speaker es ON e.idEvent = es.Event_idEvent INNER JOIN Speaker s ON es.Speaker_idSpeaker = s.idSpeaker WHERE e.idEvent = ' + id, callback);
     }
 }
 
