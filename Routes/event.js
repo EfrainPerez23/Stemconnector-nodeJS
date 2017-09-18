@@ -12,12 +12,12 @@ router.get('/:id', (req, res) => {
             // Server err
             if (err) {
                 res.status(500);
-                return res.json({ "success": false, status: 500, "message": "could not retrieve data" })
+                return res.json({ "success": false, status: 500, "message": "could not retrieve data" });
             }
             // 404 not Found
             if (!result.length) {
                 res.status(404);
-                return res.json({ "success": false, status: 404, "message": "could not retrieve data" })
+                return res.json({ "success": false, status: 404, "message": "could not retrieve data" });
             }
 
             res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
@@ -27,12 +27,12 @@ router.get('/:id', (req, res) => {
             //server err
             if (err) {
                 res.status(500);
-                return res.json({ "success": false, status: 500, "message": "could not retrieve data" })
+                return res.json({ "success": false, status: 500, "message": "could not retrieve data" });
             }
             // 404 not Found
             if (!result.length) {
                 res.status(404);
-                return res.json({ errors: ['Their are no events'] })
+                return res.json({ "success": false, status: 404, "message": "could not retrieve data" });
             }
             res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
         });
@@ -45,7 +45,7 @@ router.post('/', function(req, res) {
                 console.log('[mysql error]', dbErr);
             });
             console.log(err);
-            return res.json({ "success": false, status: 500, "message": "could not retrieve data" })
+            return res.json({ "success": false, status: 500, "message": "could not retrieve data" });
         }
 
         res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
@@ -58,7 +58,7 @@ router.delete('/:id', function(req, res) {
             db.on('error', (dbErr) => {
                 console.log('[mysql error]', dbErr);
             });
-            return res.json({ "success": false, status: 500, "message": "could not retrieve data" })
+            return res.json({ "success": false, status: 500, "message": "could not retrieve data" });
             console.log(err);
         }
 
@@ -73,7 +73,7 @@ router.put('/:id', function(req, res) {
                 console.log('[mysql error]', dbErr);
             });
             console.log(err);
-            return res.json({ "success": false, status: 500, "message": "could not retrieve data" })
+            return res.json({ "success": false, status: 500, "message": "could not retrieve data" });
         }
 
         res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
