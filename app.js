@@ -10,9 +10,10 @@ app.use(cors());
 
 const port = process.env.port || 3000;
 
-let eventController = require('./Routes/Event/event');
+let eventController = require('./Routes/event');
 let initiativeController = require('./Routes/initiative');
 let activityController = require('./Routes/Activity');
+let speakerController = require('./Routes/speaker');
 
 db.connect((err) => {
     if (err) {
@@ -26,6 +27,7 @@ db.connect((err) => {
 app.use('/events', eventController);
 app.use('/initiatives', initiativeController);
 app.use('/activity', activityController);
+app.use('/speakers', speakerController);
 
 app.use((req, res, next) => {
     res.status(404).send({ "success": false, "status": 404, "message": 'sorry cant find that!', "data": {} });

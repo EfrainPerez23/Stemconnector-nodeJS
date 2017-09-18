@@ -5,7 +5,7 @@ const activityControl = require('../Models/ActivityModel');
 
 //Get all Activities
 router.get('/', (req, res) => {
-    activityControl.getactivities(function(err, result) {
+    activityControl.getActivities(function(err, result) {
         // Server err
         if (err) {
             res.status(500);
@@ -20,10 +20,10 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id?', (req, res) => {
+router.get('/:id', (req, res) => {
     const id = db.escape(req.params.id);
     if (id) {
-        activityControl.getactivity(id, function(err, result) {
+        activityControl.getActivity(id, function(err, result) {
             // Server err
             if (err) {
                 res.status(500);
@@ -39,7 +39,7 @@ router.get('/:id?', (req, res) => {
     }
 });
 
-router.post('/add', function(req, res) {
+router.post('/', function(req, res) {
     activityControl.addActivity(req.body, function(err, result) {
         if (err) {
             db.on('error', (dbErr) => {
@@ -53,7 +53,7 @@ router.post('/add', function(req, res) {
     });
 });
 
-router.delete('/delete/:id', function(req, res) {
+router.delete('/:id', function(req, res) {
     activityControl.deleteActivity(db.escape(req.params.id), function(err, result) {
         if (err) {
             db.on('error', (dbErr) => {
@@ -66,7 +66,7 @@ router.delete('/delete/:id', function(req, res) {
     });
 });
 
-router.put('/update/:id', function(req, res) {
+router.put('/:id', function(req, res) {
     activityControl.UpdateActivity(db.escape(req.params.id), req.body, function(err, result) {
         if (err) {
             db.on('error', (dbErr) => {

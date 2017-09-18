@@ -6,7 +6,7 @@ const db = mysql.createConnection({
     host: '138.197.89.43',
     user: 'user',
     password: 'stemconnector',
-    database: 'mydb',
+    database: 'shecDB',
 });
 
 module.exports = db;
