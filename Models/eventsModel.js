@@ -20,7 +20,7 @@ let eventModel = {
         return db.query('SELECT * FROM Activity WHERE Event_idEvent = ' + id + 'ORDER BY 3 ASC ', callback);
     },
     SpeakersEvent: function(id, callback) {
-        return db.query('SELECT e.idSpeaker, e.name, e.title, e.bio FROM Event e INNER JOIN Event_has_Speaker es ON e.idEvent = es.Event_idEvent INNER JOIN Speaker s ON es.Speaker_idSpeaker = s.idSpeaker WHERE e.idEvent = ' + id, callback);
+        return db.query('SELECT s.idSpeaker, s.name, s.title, s.bio FROM Event e INNER JOIN Event_has_Speaker es ON e.idEvent = es.Event_idEvent INNER JOIN Speaker s ON es.Speaker_idSpeaker = s.idSpeaker WHERE e.idEvent = ' + id, callback);
     }
 };
 
