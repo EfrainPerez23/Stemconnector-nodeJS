@@ -11,9 +11,9 @@ app.use(cors());
 const port = process.env.port || 3000;
 
 let eventController = require('./Routes/event');
-let initiativeController = require('./Routes/Initiative');
+let initiativeController = require('./Routes/initiative');
 let activityController = require('./Routes/Activity');
-let speakerController = require('./Routes/Speaker');
+let speakerController = require('./Routes/speaker');
 
 db.connect((err) => {
     if (err) {

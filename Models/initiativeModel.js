@@ -20,6 +20,6 @@ let InitiativeModel = {
     events: function(id, callback) {
         return db.query('SELECT * FROM  `Event` WHERE  `idInitiative` =' + id, callback);
     }
-}
+};
 
 module.exports = InitiativeModel;

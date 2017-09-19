@@ -16,6 +16,6 @@ let speakerModel = {
     updateSpeaker: function(id, ev, callback) {
         return db.query('UPDATE  `Speaker` SET  `name`= ?, `title`= ?, `bio`= ? WHERE  `Speaker`.`idSpeaker` =  ' + id + ';', [ev.name, ev.title, ev.bio], callback);
     }
-}
+};
 
 module.exports = speakerModel;

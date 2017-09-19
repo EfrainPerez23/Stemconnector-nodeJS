@@ -16,6 +16,6 @@ let activityModel = {
     UpdateActivity: function(id, ev, callback) {
         return db.query('UPDATE `Activity` SET Event_idEvent = ?, startTime = ?, endTime = ?, name = ?, description = ? WHERE idactivity = ' + id, [ev.Event_idEvent, ev.startTime, ev.endTime, ev.name, ev.description], callback);
     }
-}
+};
 
 module.exports = activityModel;
