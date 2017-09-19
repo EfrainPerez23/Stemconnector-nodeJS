@@ -2,10 +2,10 @@ const db = require('../DataLayer/dbManager');
 
 let activityModel = {
     getActivities: function(callback) {
-        return db.query('SELECT * FROM  `Activity`', callback);
+        return db.query('SELECT `idActivity, Event_idEvent, UNIX_TIMESTAMP(startTime), UNIX_TIMESTAMP(endTime), name, description` FROM  `Activity`', callback);
     },
     getActivity: function(id, callback) {
-        return db.query('SELECT * FROM `Activity` WHERE idActivity = ' + id, callback);
+        return db.query('SELECT idActivity, Event_idEvent, UNIX_TIMESTAMP(startTime), UNIX_TIMESTAMP(endTime), name, description FROM `Activity` WHERE idActivity = ' + id, callback);
     },
     addActivity: function(ev, callback) {
         return db.query('INSERT INTO `Activity` VALUES (?,?,?,?,?,?)', [null, ev.Event_idEvent, ev.startTime, ev.endTime, ev.name, ev.description], callback);
