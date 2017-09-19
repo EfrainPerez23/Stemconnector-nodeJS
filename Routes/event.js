@@ -52,6 +52,10 @@ router.get('/:id/activities', (req, res) => {
             res.status(404);
             return res.json({ errors: ['Event not found', err] })
         }
+
+        var j = JSON.stringify(result);
+        console.log(j[2]);
+
         res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
     });
 });
