@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('./../DataLayer/dbManager.js');
-const speakerControl = require('../Models/speakerModel');
+const speakerControl = require('../Models/SpeakerModel');
 
 
 // get list of Events
