@@ -8,7 +8,7 @@ let eventModel = {
         return db.query('SELECT *  FROM Event WHERE idEvent = ' + id, callback);
     },
     addEvent: function(ev, callback) {
-        return db.query('INSERT INTO `Event` VALUES (?,?,?,?,?,?,?,?,?)', [null, ev.name, ev.description, ev.status, ev.startDate, ev.endDate, ev.idInitiative, ev.email, ev.localizacion], callback);
+        return db.query('INSERT INTO `Event` VALUES (?,?,?,?,?,?,?,?,?)', [null, ev.name, ev.description, ev.status, ev.startDate, ev.endDate, ev.idInitiative, ev.email, ev.location], callback);
     },
     deleteEvent: function(id, callback) {
         return db.query('DELETE FROM `Event` WHERE idEvent = ' + id, callback);
