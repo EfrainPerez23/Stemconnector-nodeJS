@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-const port = process.env.port || 8080;
+const port = process.env.port || 3000;
 
 let eventController = require('./Routes/event');
 let initiativeController = require('./Routes/initiative');
