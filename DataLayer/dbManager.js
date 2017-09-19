@@ -3,9 +3,9 @@ const mysql = require('mysql');
 // Create Connection
 
 const db = mysql.createConnection({
-    host: '138.197.89.43',
-    user: 'user',
-    password: 'stemconnector',
+    host: '165.227.183.92',
+    user: 'client',
+    password: 'STEM20!7',
     database: 'shecDB',
 });
 
