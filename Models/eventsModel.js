@@ -22,6 +22,6 @@ let eventModel = {
     SpeakersEvent: function(id, callback) {
         return db.query('SELECT idSpeaker, name, title, bio FROM Event e INNER JOIN Event_has_Speaker es ON e.idEvent = es.Event_idEvent INNER JOIN Speaker s ON es.Speaker_idSpeaker = s.idSpeaker WHERE e.idEvent = ' + id, callback);
     }
-}
+};
 
 module.exports = eventModel;
