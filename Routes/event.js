@@ -41,13 +41,12 @@ router.get('/:id?', (req, res) => {
 });
 
 router.post('/find', function(req, res) {
-    console.log(req.body);
     eventControl.searchEvent(req.body, function(err, result) {
+        console.log(1);
         if (err) {
             db.on('error', (dbErr) => {
                 console.log('[mysql error]', dbErr);
             });
-            console.log(err);
             return res.json({ "success": false, status: 500, "message": "could not retrieve data" });
         }
         res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
