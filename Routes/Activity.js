@@ -13,8 +13,8 @@ router.get('/', (req, res) => {
         }
         // 404 not Found
         if (!result.length) {
-            res.status(404);
-            return res.json({ "success": false, status: 404, "message": "could not retrieve data" });
+            res.status(200);
+            return res.json({ "success": false, status: 200, "message": "No data", "data": result });
         }
         res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
     });
@@ -33,8 +33,8 @@ router.get('/:id', (req, res) => {
             }
             // 404 not Found
             if (!result.length) {
-                res.status(404);
-                return res.json({ "success": false, status: 404, "message": "could not retrieve data" });
+                res.status(200);
+                return res.json({ "success": false, status: 200, "message": "No data", "data": result });
             }
             res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
         });
