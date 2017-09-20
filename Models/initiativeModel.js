@@ -18,7 +18,7 @@ let InitiativeModel = {
         //validate empty data on the fron-end
     },
     events: function(id, callback) {
-        return db.query('SELECT * FROM  `Event` WHERE  `idInitiative` =' + id, callback);
+        return db.query('SELECT * FROM  `Event` WHERE  Initiative_idInitiative =' + id, callback);
     }
 };
 
