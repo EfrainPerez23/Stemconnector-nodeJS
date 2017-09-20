@@ -42,7 +42,6 @@ router.get('/:id?', (req, res) => {
 
 router.post('/find', function(req, res) {
     eventControl.searchEvent(req.body, function(err, result) {
-        console.log(1);
         if (err) {
             db.on('error', (dbErr) => {
                 console.log('[mysql error]', dbErr);
