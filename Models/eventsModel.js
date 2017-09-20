@@ -21,6 +21,9 @@ let eventModel = {
     },
     SpeakersEvent: function(id, callback) {
         return db.query('SELECT s.idSpeaker, s.name, s.title, s.bio, s.imageUrl FROM Event e INNER JOIN Event_has_Speaker es ON e.idEvent = es.Event_idEvent INNER JOIN Speaker s ON es.Speaker_idSpeaker = s.idSpeaker WHERE e.idEvent = ' + id, callback);
+    },
+    searchEvent: function(name, callback) {
+        return db.query('Select * FROM Event WHERE name COLLATE UTF8_GENERAL_CI LIKE  %' + name + '%');
     }
 };
 

@@ -40,6 +40,20 @@ router.get('/:id?', (req, res) => {
     }
 });
 
+router.post('/find', function(req, res) {
+    console.log(req.body);
+    eventControl.searchEvent(req.body, function(err, result) {
+        if (err) {
+            db.on('error', (dbErr) => {
+                console.log('[mysql error]', dbErr);
+            });
+            console.log(err);
+            return res.json({ "success": false, status: 500, "message": "could not retrieve data" });
+        }
+        res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
+    });
+});
+
 router.get('/:id/activities', (req, res) => {
     eventControl.ActivitiesEvent(db.escape(req.params.id), function(err, result) {
         // Server err
