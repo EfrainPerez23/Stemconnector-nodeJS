@@ -14,7 +14,8 @@ let eventModel = {
         return db.query('DELETE FROM `Event` WHERE idEvent = ' + id, callback);
     },
     UpdateEvent: function(id, ev, callback) {
-        return db.query('UPDATE `Event` SET name = ?, description = ?, status = ?, startDate = ?, endDate = ?, Initiative_idInitiative = ?, email = ?, location = ?, imageUrl WHERE idEvent = ' + id, [null, ev.name, ev.description, ev.status, ev.startDate, ev.endDate, ev.Initiative_idInitiative, ev.email, ev.location, ev.imageUrl], callback);
+        console.log(id);
+        return db.query('UPDATE `Event` SET idEvent = null, name = ?, description = ?, status = ?, startDate = ?, endDate = ?, Initiative_idInitiative = ?, email = ?, location = ?, imageUrl = ? WHERE idEvent = ' + id, [ev.name, ev.description, ev.status, ev.startDate, ev.endDate, ev.Initiative_idInitiative, ev.email, ev.location, ev.imageUrl], callback);
     },
     ActivitiesEvent: function(id, callback) {
         return db.query('SELECT * FROM Activity WHERE Event_idEvent = ' + id + 'ORDER BY 3 ASC ', callback);
