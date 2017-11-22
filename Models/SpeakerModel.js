@@ -8,7 +8,7 @@ let speakerModel = {
         return db.query('SELECT * FROM `Speaker` WHERE idSpeaker = ' + id, callback);
     },
     addSpeaker: function(ev, callback) {
-        return db.query('INSERT INTO `Speaker` VALUES (?,?,?,?)', [null, ev.name, ev.title, ev.bio], callback);
+        return db.query('INSERT INTO `Speaker` VALUES (?,?,?,?,?)', [null, ev.name, ev.title, ev.bio, ev.imageUrl], callback);
     },
     deleteSpeaker: function(id, callback) {
         return db.query('DELETE FROM `Speaker` WHERE idSpeaker = ' + id, callback);
