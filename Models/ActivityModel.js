@@ -14,7 +14,7 @@ let activityModel = {
         return db.query('DELETE FROM `Activity` WHERE idActivity = ' + id, callback);
     },
     UpdateActivity: function(id, ev, callback) {
-        return db.query('UPDATE `Activity` SET Event_idEvent = ?, startTime = ?, endTime = ?, name = ?, description = ? WHERE idactivity = ' + id, [ev.Event_idEvent, ev.startTime, ev.endTime, ev.name, ev.description], callback);
+        return db.query('UPDATE `Activity` SET Event_idEvent = ?, startTime = ?, endTime = ?, name = ?, description = ? WHERE idActivity = ' + id + ';', [ev.Event_idEvent, ev.startTime, ev.endTime, ev.name, ev.description], callback);
     }
 };
 
