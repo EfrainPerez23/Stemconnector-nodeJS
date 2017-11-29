@@ -2,7 +2,7 @@ const db = require('../DataLayer/dbManager');
 
 let activityModel = {
     getActivities: function(callback) {
-        return db.query('SELECT idActivity, Event_idEvent, startTime , endTime ,  `name` ,  `description`, location FROM Activity', callback);
+        return db.query('SELECT idActivity, Event_idEvent, startTime , endTime ,  `name` ,  `description`, location FROM Activity ORDER BY startTime ASC', callback);
     },
     getActivity: function(id, callback) {
         return db.query('SELECT idActivity, Event_idEvent, startTime, endTimE, name, description, location FROM `Activity` WHERE idActivity = ' + id, callback);
