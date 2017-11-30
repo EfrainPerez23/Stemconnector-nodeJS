@@ -14,6 +14,7 @@ let eventController = require('./Routes/event');
 let initiativeController = require('./Routes/initiative');
 let activityController = require('./Routes/Activity');
 let speakerController = require('./Routes/speaker');
+let internController = require('./Routes/Intern');
 
 db.connect((err) => {
     if (err) {
@@ -28,6 +29,7 @@ app.use('/events', eventController);
 app.use('/initiatives', initiativeController);
 app.use('/activity', activityController);
 app.use('/speakers', speakerController);
+app.use('/interns', internController);
 
 app.use((req, res, next) => {
     res.status(404).send({ "success": false, "status": 404, "message": 'sorry cant find that!', "data": {} });
