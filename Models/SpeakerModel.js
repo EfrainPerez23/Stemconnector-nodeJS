@@ -21,6 +21,9 @@ let speakerModel = {
     },
     lastIdSpeaker: function(callback) {
         return db.query('SELECT idSpeaker AS  lastId FROM Speaker ORDER BY 1 DESC  LIMIT 1', callback);
+    },
+    deleteEvent_has_Speaker: function(id, callback) {
+        return db.query('DELETE FROM `Event_has_Speaker` WHERE Speaker_idSpeaker = ' + id, callback);
     }
 };
 
