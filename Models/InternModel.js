@@ -8,13 +8,13 @@ let internModel = {
         return db.query('SELECT * FROM `Intern` WHERE idIntern = ' + id, callback);
     },
     addIntern: function(ev, callback) {
-        return db.query('INSERT INTO `Intern` VALUES (?,?,?,?,?,?)', [null, ev.name, ev.country, ev.photo, ev.flagImage, ev.description], callback);
+        return db.query('INSERT INTO `Intern` VALUES (?,?,?,?,?,?,?)', [null, ev.name, ev.country, ev.photo, ev.flagImage, ev.description, ev.rol], callback);
     },
     deleteIntern: function(id, callback) {
         return db.query('DELETE FROM `Intern` WHERE idIntern = ' + id, callback);
     },
     updateIntern: function(id, ev, callback) {
-        return db.query('UPDATE  `Intern` SET  `name`= ?, `country`= ?, `photo`= ?, `flagImage`= ?, `description`= ? WHERE  `Intern`.`idIntern` =  ' + id + ';', [ev.name, ev.country, ev.photo, ev.flagImage, ev.description], callback);
+        return db.query('UPDATE  `Intern` SET  `name`= ?, `country`= ?, `photo`= ?, `flagImage`= ?, `description`= ?, `rol`= ? WHERE  `Intern`.`idIntern` =  ' + id + ';', [ev.name, ev.country, ev.photo, ev.flagImage, ev.description, ev.rol], callback);
     }
 };
 
