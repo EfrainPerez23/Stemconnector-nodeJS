@@ -15,6 +15,12 @@ let speakerModel = {
     },
     updateSpeaker: function(id, ev, callback) {
         return db.query('UPDATE  `Speaker` SET  `name`= ?, `title`= ?, `bio`= ?, `imageUrl`= ? WHERE  `Speaker`.`idSpeaker` =  ' + id + ';', [ev.name, ev.title, ev.bio, ev.imageUrl], callback);
+    },
+    addEvent_has_Speaker: function(ev, callback) {
+        return db.query('INSERT INTO `Event_has_Speaker` VALUES(?,?)', [ev.Event_idEvent, ev.Speaker_idSpeaker], callback);
+    },
+    lastIdSpeaker: function(callback) {
+        return db.query('SELECT idSpeaker AS  lastId FROM Speaker ORDER BY 1 DESC  LIMIT 1', callback);
     }
 };
 
