@@ -19,6 +19,26 @@ router.get('/lastId', (req, res) => {
         return res.status(200).json({ "success": true, status: 200, "message": "", "data": result[0] });
     });
 });
+
+router.get('/eventsSpeaker/:id', (req, res) => {
+    if (req.params.id) {
+        const id = db.escape(req.params.id);
+        speakerControl.eventsSpeaker(id, function(err, result) {
+            //server err
+            if (err) {
+                res.status(500);
+                return res.json({ "success": false, status: 500, "message": "could not retrieve data" });
+            }
+            // 404 not Found
+            if (!result.length) {
+                res.status(200);
+                return res.json({ "success": true, status: 200, "message": "No data", "data": result });
+            }
+            res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
+        });
+    }
+
+});
 // get list of Events
 router.get('/:id', (req, res) => {
     const id = db.escape(req.params.id);
