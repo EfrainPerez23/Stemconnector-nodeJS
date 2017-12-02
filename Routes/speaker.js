@@ -145,4 +145,18 @@ router.delete('/eventHasSpeaker/:id', function(req, res) {
     });
 });
 
+router.delete('/eventHasSpeaker/:idEvent/:idSpeaker', function(req, res) {
+    speakerControl.deleteEventsSpeaker(db.escape(req.params.idEvent), db.escape(req.params.idSpeaker), function(err, result) {
+        if (err) {
+            db.on('error', (dbErr) => {
+                console.log('[mysql error]', dbErr);
+            });
+            console.log(err);
+            return res.json({ "success": false, status: 500, "message": "could not retrieve data" });
+        }
+
+        res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
+    });
+});
+
 module.exports = router;

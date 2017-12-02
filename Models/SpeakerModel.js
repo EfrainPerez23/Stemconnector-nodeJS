@@ -27,6 +27,9 @@ let speakerModel = {
     },
     eventsSpeaker: function(id, callback) {
         return db.query('SELECT e.idEvent, e.name, e.description, e.status, e.startDate, e.endDate, e.Initiative_idInitiative, e.location, e.email, e.imageUrl FROM Speaker s INNER JOIN Event_has_Speaker es ON s.idSpeaker = es.Speaker_idSpeaker INNER JOIN Event e ON es.Event_idEvent = e.idEvent WHERE s.idSpeaker =' + id + ';', callback);
+    },
+    deleteEventsSpeaker: function(idEvent, idSpeaker, callback) {
+        return db.query('DELETE FROM `Event_has_Speaker` WHERE Event_idEvent = ' + idEvent + 'AND Speaker_idSpeaker = ' + idSpeaker, callback);
     }
 };
 
