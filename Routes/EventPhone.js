@@ -39,6 +39,23 @@ router.get('/:id?', (req, res) => {
     }
 });
 
+
+
+router.get('/events/:id', (req, res) => {
+    eventPhoneControl.eventPhones(db.escape(req.params.id), function(err, result) {
+        // Server err
+        if (err) {
+            res.status(500);
+            return res.json({ "success": false, status: 500, "message": result });
+        }
+        // 404 not Found
+        if (!result.length) {
+            res.status(200);
+            return res.json({ "success": true, status: 200, "message": "No data", "data": result });
+        }
+        res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
+    });
+});
 router.post('/', function(req, res) {
     eventPhoneControl.UpdateEventPhone(req.body, function(err, result) {
         if (err) {

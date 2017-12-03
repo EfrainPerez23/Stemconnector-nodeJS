@@ -15,6 +15,9 @@ let activityModel = {
     },
     UpdateEventPhone: function(id, ev, callback) {
         return db.query('UPDATE `EventPhone` SET idEventPhone = ?, phone = ?, Event_idEvent = ? WHERE idEventPhone = ' + id + ';', [null, ev.phone, ev.Event_idEvent], callback);
+    },
+    eventPhones: function(idEvent, callback) {
+        return db.query('SELECT * FROM EventPhone Where Event_idEvent = ' + idEvent, callback);
     }
 };
 
