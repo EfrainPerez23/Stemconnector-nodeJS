@@ -57,7 +57,7 @@ router.get('/events/:id', (req, res) => {
     });
 });
 router.post('/', function(req, res) {
-    eventPhoneControl.UpdateEventPhone(req.body, function(err, result) {
+    eventPhoneControl.addEventPhone(req.body, function(err, result) {
         if (err) {
             db.on('error', (dbErr) => {
                 console.log('[mysql error]', dbErr);
