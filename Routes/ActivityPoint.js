@@ -3,6 +3,23 @@ let router = express.Router();
 let db = require('./../DataLayer/dbManager.js');
 let activityPointController = require('../Models/ActivityPointModel');
 
+router.get('/activity/:id', (req, res) => {
+    const id = db.escape(req.params.id);
+    activityPointController.getPointsOfActivity(id, function(err, result) {
+        // Server err
+        if (err) {
+            res.status(500);
+            return res.json({ "success": false, status: 500, "message": "could not retrieve data" });
+        }
+        // 404 not Found
+        if (!result.length) {
+            res.status(200);
+            return res.json({ "success": true, status: 200, "message": "No data", "data": result });
+        }
+
+        res.status(200).json({ "success": true, status: 200, "message": "", "data": result });
+    });
+});
 router.get('/:id?', (req, res) => {
     const id = db.escape(req.params.id);
     if (req.params.id) {
@@ -36,6 +53,7 @@ router.get('/:id?', (req, res) => {
         });
     }
 });
+
 
 
 router.post('/', function(req, res) {

@@ -15,6 +15,9 @@ let activityModel = {
     },
     updateActivityPoint: function(id, ev, callback) {
         return db.query('UPDATE `Point` SET Activity_idActivity = ?, description = ? WHERE id = ' + id + ';', [ev.Activity_idActivity, ev.description], callback);
+    },
+    getPointsOfActivity: function(id, callback) {
+        return db.query('SELECT * FROM Point WHERE Activity_idActivity= ' + id + ';', callback);
     }
 };
 
