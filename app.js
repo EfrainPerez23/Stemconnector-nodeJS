@@ -19,6 +19,7 @@ let eventPhonesController = require('./Routes/EventPhone');
 let activityPointController = require('./Routes/ActivityPoint');
 let companyController = require('./Routes/Company');
 let contactController = require('./Routes/Contact');
+let adminController = require('./Routes/Admin');
 
 db.connect((err) => {
     if (err) {
@@ -38,6 +39,7 @@ app.use('/eventPhones', eventPhonesController);
 app.use('/activityPoint', activityPointController);
 app.use('/company', companyController);
 app.use('/contact', contactController);
+app.use('/admin', adminController);
 
 app.use((req, res, next) => {
     res.status(404).send({ "success": false, "status": 404, "message": 'sorry cant find that!', "data": {} });
